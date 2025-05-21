@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Web Page</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-body">
+  <!-- Navigation -->
+  <header class="nav-header">
+    <nav class="nav-container">
+      <a href="#" class="nav-logo" id="logoNav">
+        <img src="logo.png" alt="Consultancy Logo" class="logo-img">
+      </a>
+      <div class="nav-links">
+        <a href="#" id="homeNav" class="nav-link">Home</a>
+        <a href="#" id="aboutNav" class="nav-link">About</a>
+        <a href="#" id="contactNav" class="nav-link">Contact</a>
+      </div>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+        
+      </button>
+    </nav>
+    <div id="nav-menu" class="nav-mobile-menu">
+      <a href="#" id="homeNavMobile" class="nav-mobile-link">Home</a>
+      <a href="#" id="aboutNavMobile" class="nav-mobile-link">About</a>
+      <a href="#" id="contactNavMobile" class="nav-mobile-link">Contact</a>
+    </div>
+  </header>
+
+  <!-- Cover -->
+  <section class="cover-section">
+    <img src="cover_image.png" alt="Cover" class="cover-image">
+    <div class="cover-overlay">
+      <!-- <img src="logo.png" alt="Logo" class="cover-logo"> -->
+      <h1 class="cover-title">Electrical Engineering Consultancy</h1>
+    </div>
+  </section>
+
+  <!-- Main Views -->
+  <main class="main-container">
+    <!-- HOME VIEW -->
+    <div id="homeSection">
+      <!-- Cards -->
+      <section class="card-section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="card-grid">
+          <div class="card" data-service="planning">
+            <img src="planning.png" alt="Planning" class="card-image">
+            <div class="card-content">
+              <h3 class="card-title">Planning</h3>
+              <p class="card-description">Comprehensive project planning and feasibility studies for on-time, cost-effective execution.</p>
+            </div>
+          </div>
+          <div class="card" data-service="design">
+            <img src="design.png" alt="Design" class="card-image">
+            <div class="card-content">
+              <h3 class="card-title">Design</h3>
+              <p class="card-description">Detailed electrical schematics and system layouts optimized for performance and safety.</p>
+            </div>
+          </div>
+          <div class="card" data-service="engineering">
+            <img src="engineering.png" alt="Engineering" class="card-image">
+            <div class="card-content">
+              <h3 class="card-title">Engineering</h3>
+              <p class="card-description">Expert system integration, testing, and commissioning to ensure reliable power delivery.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <section class="form-section">
+        <h2 class="section-title">Contact Us</h2>
+        <form id="contactForm" class="form-container">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" id="name" class="form-input" required>
+
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" class="form-input" required>
+
+          <label for="message" class="form-label">Message</label>
+          <textarea id="message" rows="4" class="form-textarea" required></textarea>
+
+          <button type="submit" class="form-button">Submit</button>
+        </form>
+        <div id="successMessage" class="success-message">Thank you! Your message has been saved.</div>
+      </section>
+    </div>
+
+    <!-- DETAIL VIEW -->
+    <div id="detailSection" style="display:none;">
+      <section id="planningDetail" class="detail-section" style="display:none;">
+        <h2 class="section-title">Planning</h2>
+        <p>In our Planning phase, we develop comprehensive project plans, conduct feasibility studies, perform site assessments, and outline detailed roadmaps—ensuring your project stays on schedule and within budget.</p>
+      </section>
+      <section id="designDetail" class="detail-section" style="display:none;">
+        <h2 class="section-title">Design</h2>
+        <p>Our Design services deliver detailed single-line diagrams, equipment specifications, and system layouts, all crafted to industry standards for optimal performance, safety, and maintainability.</p>
+      </section>
+      <section id="engineeringDetail" class="detail-section" style="display:none;">
+        <h2 class="section-title">Engineering</h2>
+        <p>During Engineering & Commissioning, we handle system integration, control logic programming, testing, and on-site commissioning—guaranteeing reliable operation from day one.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeAbout">&times;</span>
+      <h2>About Us</h2>
+      <p>Founded in 2025, our consultancy specializes in delivering end-to-end electrical engineering solutions—from initial planning and design through system integration and commissioning. We ensure safety, reliability, and performance for every project.</p>
+      <button class="modal-ok" id="okAbout">OK</button>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeContact">&times;</span>
+      <h2>Contact Information</h2>
+      <p>Email: info@consultancy.com<br>Phone: +123456789<br>Address: 123 Main St, City</p>
+      <button class="modal-ok" id="okContact">OK</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      &copy; 2025 Electrical Engineering Consultancy Company. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile nav toggle
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('visible');
+    });
+
+    // Show detail on card click
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.getElementById('homeSection').style.display = 'none';
+        document.getElementById('detailSection').style.display = 'block';
+        document.querySelectorAll('.detail-section').forEach(s => s.style.display = 'none');
+        document.getElementById(card.dataset.service + 'Detail').style.display = 'block';
+      });
+    });
+
+    // Return Home (only Home links)
+    ['homeNav', 'homeNavMobile'].forEach(id => {
+      document.getElementById(id).addEventListener('click', e => {
+        e.preventDefault();
+        document.getElementById('detailSection').style.display = 'none';
+        document.getElementById('homeSection').style.display = 'block';
+      });
+    });
+
+    // About & Contact modals
+    const aboutModal = document.getElementById('aboutModal');
+    const contactModal = document.getElementById('contactModal');
+    ['aboutNav', 'aboutNavMobile'].forEach(id => {
+      document.getElementById(id).addEventListener('click', e => {
+        e.preventDefault();
+        aboutModal.style.display = 'flex';
+      });
+    });
+    ['contactNav', 'contactNavMobile'].forEach(id => {
+      document.getElementById(id).addEventListener('click', e => {
+        e.preventDefault();
+        contactModal.style.display = 'flex';
+      });
+    });
+    document.getElementById('closeAbout').addEventListener('click', () => aboutModal.style.display = 'none');
+    document.getElementById('okAbout').addEventListener('click', () => aboutModal.style.display = 'none');
+    document.getElementById('closeContact').addEventListener('click', () => contactModal.style.display = 'none');
+    document.getElementById('okContact').addEventListener('click', () => contactModal.style.display = 'none');
+
+    // Form validation & localStorage
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('successMessage');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const nameVal = form.name.value.trim();
+      const emailVal = form.email.value.trim();
+      const msgVal = form.message.value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!nameVal || !emailVal || !msgVal || !emailPattern.test(emailVal)) {
+        return alert('Please fill in all fields with a valid email.');
+      }
+      const data = JSON.parse(localStorage.getItem('formData') || '[]');
+      data.push({ name: nameVal, email: emailVal, message: msgVal, submittedAt: new Date().toISOString() });
+      localStorage.setItem('formData', JSON.stringify(data));
+      form.reset(); msg.classList.add('visible'); setTimeout(() => msg.classList.remove('visible'), 5000);
+    });
+  </script>
+</body>
+</html>
